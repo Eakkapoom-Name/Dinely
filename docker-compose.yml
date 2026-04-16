@@ -1,0 +1,55 @@
+name: "fast-vue1"
+services:
+  fastapi:
+    build: fastapi
+    ports:
+      - "56733:8080" # Expose for host machine access
+    volumes:
+      - ./fastapi:/fastapi_app
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_started
+        required: false
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  db:
+    image: postgres:13-alpine
+    profiles:
+      - with-db # Only starts when using: docker compose --profile with-db up
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: hello_flask
+      POSTGRES_PASSWORD: hello_flask
+      POSTGRES_DB: hello_flask_dev
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - './frontend:/app'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - fastapi
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:

@@ -1,0 +1,44 @@
+# General ignores
+.git
+.gitignore
+node_modules
+postgres_data
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+.env
+.env.*
+.vscode
+.idea
+*.log
+*.swp
+
+# Ignore mounted folders (Flask & Frontend)
+flask/  # Mounted in container, no need to copy
+frontend/  # Mounted in container, no need to copy
+
+# Ignore Postgres volume data
+postgres_data/
+
+# Flask-specific ignores (excluding mounted app folder)
+flask/__pycache__/
+flask/app/__pycache__/
+flask/venv/
+flask/*.pyc
+flask/*.pyo
+flask/.mypy_cache
+flask/.pytest_cache
+flask/Pipfile.lock
+flask/build_docker.sh
+flask/gunicorn_starter.sh.orig
+
+# Frontend-specific ignores (excluding mounted app folder)
+frontend/node_modules
+frontend/.vite
+frontend/dist
+frontend/.cache
+frontend/.eslintcache
+frontend/yarn.lock
+frontend/start_vue.sh

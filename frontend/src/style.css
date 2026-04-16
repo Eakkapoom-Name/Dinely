@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+}
+
+aside {
+  will-change: transform;
+}
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Material icon sizing */
+.material-icons-round { font-size: inherit; }
+
+/* Animation */
+.fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+
+.slide-up-enter-active, .slide-up-leave-active { transition: all 0.3s ease; }
+.slide-up-enter-from { transform: translateY(100%); opacity: 0; }
+.slide-up-leave-to { transform: translateY(100%); opacity: 0; }
+
+/* Toggle switch */
+.toggle-switch {
+    @apply relative inline-flex h-7 w-12 items-center rounded-full transition-colors duration-200 cursor-pointer;
+}
+
+/* Toggle switch */
+.toggle-switch .toggle-dot {
+    @apply inline-block h-5 w-5 transform rounded-full bg-white transition-transform duration-200 shadow;
+}
+
+/* default image */
+@layer utilities {
+    .bg-default{
+        background-image: url('./assets/default_img.png'); /* bg */
+    }   
+}
+
+@layer components {
+    .menu-card {
+        @apply relative rounded-2xl overflow-hidden aspect-square mb-2 shadow-md transition-shadow duration-300 hover:shadow-lg bg-gray-100;
+        
+        background-image: url('./assets/default_img.png'); 
+        background-size: cover;
+        background-position: center;
+    }
+
+    .menu-image {
+        @apply w-full h-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105;
+    }
+
+    .text-with-shadow {
+        @apply drop-shadow-md text-black;
+    }
+}
