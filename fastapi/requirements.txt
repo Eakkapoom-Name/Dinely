@@ -1,0 +1,35 @@
+# FastAPI framework and ASGI server
+fastapi==0.115.11
+uvicorn==0.34.0
+
+# ORM and Database tools
+SQLAlchemy==2.0.29
+sqlalchemy-serializer==1.4.22
+alembic==1.14.1
+psycopg2-binary==2.9.9
+
+
+# OAuth and JWT libraries
+Authlib==1.5.1
+python-jose==3.4.0
+bcrypt==4.1.2
+PyJWT==2.11.0
+
+# File handling and utilities
+Pillow==11.0.0
+python-multipart==0.0.18
+qrcode==8.0
+
+# Asynchronous
+asyncpg==0.31.0
+
+# Relaxed version to avoid Supabase conflict
+
+# Data validation and settings management
+pydantic>=2.9.0
+pydantic-settings>=2.5.0
+python-dotenv
+
+gunicorn
+httpx
+supabase
